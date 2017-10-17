@@ -134,21 +134,21 @@ effectExposingOne =
 
 effectExposingMany : Test
 effectExposingMany =
-    testEq "plain exposing many"
+    testEq "effect exposing many"
         (Declaration.parse "effect module Test where { command = MyCmd } exposing (a, b)")
         (Declaration "Test" (SubsetExport [ FunctionExport "a", FunctionExport "b" ]) "")
 
 
 effectExposingManyMultiline : Test
 effectExposingManyMultiline =
-    testEq "plain exposing many multiline"
+    testEq "effect exposing many multiline"
         (Declaration.parse "port module Test where { command = MyCmd } exposing\n    ( a\n    , b\n    )\n")
         (Declaration "Test" (SubsetExport [ FunctionExport "a", FunctionExport "b" ]) "")
 
 
 all : Test
 all =
-    describe "Declarations"
+    describe "Declarations tests"
         [ plain
         , plainExposingAll
         , plainExposingBinop

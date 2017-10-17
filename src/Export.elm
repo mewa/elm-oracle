@@ -71,31 +71,31 @@ parse source =
         AllExport
     else
         let
-            match source' =
-                List.map .submatches (find All pattern source')
+            match source_ =
+                List.map .submatches (find All pattern source_)
 
             process exports =
                 case exports of
                     name :: types :: binop :: [] ->
                         let
-                            name' =
+                            name_ =
                                 Maybe.withDefault "" name
 
-                            types' =
+                            types_ =
                                 Maybe.withDefault [] (split types)
 
-                            binop' =
+                            binop_ =
                                 Maybe.map FunctionExport binop
                         in
                             case binop of
-                                Just binop' ->
-                                    FunctionExport binop'
+                                Just binop_ ->
+                                    FunctionExport binop_
 
                                 Nothing ->
-                                    if isUpcase name' then
-                                        TypeExport name' (toCase types')
+                                    if isUpcase name_ then
+                                        TypeExport name_ (toCase types_)
                                     else
-                                        FunctionExport name'
+                                        FunctionExport name_
 
                     _ ->
                         Debug.crash "Shouldn't have gotten here processing exports."

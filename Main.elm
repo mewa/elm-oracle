@@ -1,14 +1,13 @@
 port module Main exposing (..)
 
 import Dict exposing (Dict)
-import Html.App
 import Html
 import Import exposing (Import)
 import Module exposing (Module)
 
 
 main =
-    Html.App.programWithFlags
+    Html.programWithFlags
         { init = init
         , update = update
         , subscriptions = subscriptions

@@ -43,7 +43,7 @@ plainExposingTypeAll =
 
 plainExposingTypeOne : Test
 plainExposingTypeOne =
-    testEq "plain exposing type all"
+    testEq "plain exposing type one"
         (Import.parse "import Test exposing (A(B))")
         ([ Import "Test" Nothing (SubsetExport [ TypeExport "A" (SomeCase [ "B" ]) ]) ])
 
@@ -120,7 +120,7 @@ asExposingManyMultiline =
 
 all : Test
 all =
-    describe "Imports"
+    describe "Imports tests"
         [ plain
         , plainExposingAll
         , plainExposingBinop

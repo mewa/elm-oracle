@@ -5,6 +5,6 @@ import Expect
 
 
 testEq : String -> a -> a -> Test
-testEq name a a' =
+testEq name a a_ =
     test name <|
-        \() -> Expect.equal a a'
+        \() -> Expect.equal a a_

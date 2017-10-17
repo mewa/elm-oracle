@@ -37,9 +37,9 @@ parse source =
 
         process match =
             case match of
-                name :: exports :: exports' :: comment :: [] ->
+                name :: exports :: exports_ :: comment :: [] ->
                     ( Maybe.withDefault "" name
-                    , Export.parse (Maybe.withDefault "" (Maybe.map2 (++) exports exports'))
+                    , Export.parse (Maybe.withDefault "" (Maybe.map2 (++) exports exports_))
                     , Maybe.withDefault "" comment
                     )
 

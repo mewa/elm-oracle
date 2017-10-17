@@ -45,10 +45,10 @@ defaultImports =
 database : List Import -> Dict String Import
 database imports =
     let
-        imports' =
-            List.map (\import' -> ( import'.name, import' )) imports
+        imports_ =
+            List.map (\import_ -> ( import_.name, import_ )) imports
     in
-        Dict.union (Dict.fromList imports') defaultImports
+        Dict.union (Dict.fromList imports_) defaultImports
 
 
 pattern : Regex
@@ -66,11 +66,11 @@ parse source =
 
         process match =
             case match of
-                name :: alias :: exports :: exports' :: [] ->
+                name :: alias :: exports :: exports_ :: [] ->
                     Import
                         (Maybe.withDefault "" name)
                         alias
-                        (Export.parse (Maybe.withDefault "" (Maybe.map2 (++) exports exports')))
+                        (Export.parse (Maybe.withDefault "" (Maybe.map2 (++) exports exports_)))
 
                 _ ->
                     Debug.crash "Shouldn't have gotten here processing imports."
